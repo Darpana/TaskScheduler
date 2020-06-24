@@ -30,4 +30,9 @@ public class TaskController {
         return taskSchedulerService.getAllActiveTasks(taskName);
     }
 
+    @GetMapping("/get/execution/tasks/{T+5}/{T+10}")
+    public List<TaskDetails> getAllTasksBetweenTime(@PathVariable("startTime") String startTime, @PathVariable("endTime") String endTime){
+        return taskSchedulerService.getAllTasksBetween(startTime, endTime);
+    }
+
 }

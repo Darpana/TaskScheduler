@@ -25,4 +25,7 @@ public interface TaskDetailsRepository extends JpaRepository<TaskDetails, Long> 
 
     @Query("SELECT td FROM TaskDetails td WHERE td.startTime > :startTime AND td.state = :state")
     List<TaskDetails> getAllActiveTasksBeforeExecutionOfTask(@Param("startTime") Date startTime, @Param("state") String state);
+
+    @Query("SELECT td FROM TaskDetails td WHERE td.state = :state AND td.startTime between :startTime AND :endTime")
+    List<TaskDetails> getAllTasksBetweenTime(@Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("state") String state);
 }

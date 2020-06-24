@@ -13,4 +13,6 @@ public interface TaskSchedulerService {
     void changeState(String taskName, String state);
 
     List<TaskDetails> getAllActiveTasks(String taskName);
+
+    List<TaskDetails> getAllTasksBetween(String startTime, String endTime);
 }

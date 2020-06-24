@@ -99,4 +99,14 @@ public class TaskSchedulerServiceImpl implements TaskSchedulerService {
         }
         return null;
     }
+
+    @Override
+    public List<TaskDetails> getAllTasksBetween(String startTime, String endTime) {
+        int start = Integer.valueOf(startTime.trim().substring(startTime.lastIndexOf("+")+1));
+        Date startDate = DateUtil.addMinutes(new Date(), start);
+        int end = Integer.valueOf(endTime.trim().substring(endTime.lastIndexOf("+")+1));
+        Date endDate = DateUtil.addMinutes(new Date(), end);
+        taskDetailsRepository.getAllTasksBetweenTime(startDate, endDate, TaskDetails.STATES.ACTIVE.name());
+        return null;
+    }
 }
